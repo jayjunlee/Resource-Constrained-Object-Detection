@@ -1,0 +1,3 @@
+dataset/processed/*.jpg
+dataset/resized/*.jpg
+__pycache__
