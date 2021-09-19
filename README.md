@@ -51,7 +51,7 @@ EfficientDet-Lite2: ~= 2700 ms
 - Torch to TFLite conversion
 For pytorch model to TFLite conversion, run the following command on terminal.
 ```python
-python3 torch_to_tflite.py --torch CNN2.pt --tflite ./model/CNN2.tflite
+python3 torch_to_tflite.py --torch ./trained_model/CNN2.pt --tflite ./model/CNN2.tflite
 ```
 ### Pruning
 
