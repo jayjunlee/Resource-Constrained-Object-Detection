@@ -15,6 +15,8 @@ Each of these images contain a single ball of five different colours: red, green
 
 The [dataset](https://github.com/jl7719/FPGA-CNN-Computer-Vision/tree/main/dataset) contains the raw images (1920x1080) and the respective label csv file that contains the dimensions of bounding boxes and the colour of the ball on the image.
 
+![Ball Dataset](balls.png)
+
 ## Implementation and Training Model
 ### Input and output formats
 The input tensor to the CNN is RGB image of size 320x240. The output tensors are a tensor of size [1x4] for the object bounding box regression and a tensor of size [1x5] for the classification / scores of each class of the balls.
