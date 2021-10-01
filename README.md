@@ -1,4 +1,5 @@
 # Resource Constrained CNN
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5543990.svg)](https://doi.org/10.5281/zenodo.5543990)
 
 A lightweight convolutional neural network solution to detect obstacle balls using computer vision that is trained using PyTorch / TFLite and implemented on the following resource constrained environments: Intel DE10-Lite FPGA and Raspberry Pi 3.
 
