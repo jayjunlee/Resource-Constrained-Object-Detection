@@ -1,7 +1,7 @@
-# Resource Constrained CNN
+# Resource Constrained Object Detection
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5543990.svg)](https://doi.org/10.5281/zenodo.5543990)
 
-A lightweight convolutional neural network solution to detect obstacle balls using computer vision that is trained using PyTorch / TFLite and implemented on the following resource constrained environments: Intel DE10-Lite FPGA and Raspberry Pi 3.
+A research project supervised by Dr David Thomas (Imperial College) on lightweight convolutional neural network solution to detect obstacle balls using computer vision that is trained using PyTorch / TFLite to be deployed on the following resource constrained environments: Intel DE10-Lite FPGA and Raspberry Pi 3.
 
 ## Limitations / Constraints
 - Limited dataset of about 500 images (approx. 100 for each class)
@@ -14,7 +14,7 @@ A lightweight convolutional neural network solution to detect obstacle balls usi
 Manually taken images are split into three categories in terms of lighting and thus brightness levels: dark, normal and bright. This is to mainly ensure robust inference of NNs under varying light settings. <br>
 Each of these images contain a single ball of five different colours: red, green, blue, yellow and pink.
 
-The [dataset](https://github.com/jl7719/FPGA-CNN-Computer-Vision/tree/main/dataset) contains the raw images (1920x1080) and the respective label csv file that contains the dimensions of bounding boxes and the colour of the ball on the image.
+The [dataset](https://github.com/jl7719/FPGA-CNN-Computer-Vision/tree/main/dataset) contains the raw images (1920x1080) and the respective label csv file that contains the dimensions of bounding boxes and the colour of the ball on the image. The dataset is published as a DOI via zenodo.
 
 ![Ball Dataset](balls.png)
 
@@ -39,11 +39,11 @@ x work on images with different backgrounds (high variance)
 ### Transfer learning pre-trained state-of-the-art CNN
 Some state-of-the-art CNNs such as the resnets and mobilenets with pre-trained early layers frozen (great feature extractors) and trainable fully connected layers at the end were trained on the dataset. The training and the progress in validation loss over the number of epochs trained was great compared to a simple CNN (just a few conv2d layers with fc layers). However, when the torch model was converted to TFLite model for deployment on raspberry pi, the **inference time was about > 3000 ms due to the limited compute power**. Although transfer learning is beneficial given a limited, small dataset, the computational cost is too high for a CPU to work in real-time with low inference time.
 
-### Learning rate scheduler
-
 ### EfficientDet
-EfficientDet-Lite0: ~= 1000 ms
-EfficientDet-Lite2: ~= 2700 ms
+Google's EfficientDet with the backbone of EfficientNet and BiFPN as its feature network that uses a compound scaling was able to achieve both the high accuracy and low inference time deep learning object detector. 
+
+- EfficientDet-Lite0: ~= 1000 ms
+- EfficientDet-Lite2: ~= 2700 ms
 
 
 ## Optimizations
