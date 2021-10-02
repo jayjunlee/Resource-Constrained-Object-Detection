@@ -31,7 +31,7 @@ Also known as the cost function, for the dual-inferencing CNN (bbox regression &
 ### Simple CNN
 The initial attempt was to design a CNN architecture with few conv2d layers followed by activations and maxpooling with fc layers in the end. 
 
-~= 30 ms
+inference time of ~= 30 ms
 very low robustness & accuracy
 fitted to training set only
 x work on images with different backgrounds (high variance)
@@ -48,6 +48,10 @@ EfficientDet-Lite2: ~= 2700 ms
 
 ## Optimizations
 ### Evaluation Metrics
+- Accuracy and robustness metrics
+- Speed metric
+- Resource utilisation metric
+
 ### Quantization Techniques
 - Post-training quantization
 - Quantization-aware training
@@ -56,15 +60,12 @@ For pytorch model to TFLite conversion, run the following command on terminal.
 ```python
 python3 torch_to_tflite.py --torch ./trained_model/CNN2.pt --tflite ./model/CNN2.tflite
 ```
-### Pruning
 
 ## Room for improvements
 ### Biased dataset
 I started this project by collecting the ball dataset, purely out of my experience from [hard-coded computer vision](https://github.com/rs3319/EE2-Mars-Rover-Project-2021/blob/main/DE10_LITE_D8M_VIP_16/ip/EEE_IMGPROC/EEE_IMGPROC.v) that directly works (only in the optimal light setting) from the individual pixel values that are gaussian filtered to minimise noise. I thought by collecting images of certain categories of light settings (dark, normal, bright), it would help neural networks to generalize better but it turns out that was not the case despite image augmentation and possibly due to [this](https://jmlr.org/papers/volume20/19-519/19-519.pdf) nature of CNNs.
 ### Importance of neural network accelerators
 When deploying several trained models on Raspberry Pi 3, only a minimal CNN e.g. 2 conv2d layers followed by 2 fc layers was just about to satisfy the resource constraints and the target performance in terms of the frame rate and inference time. This leads to how the current processors on edge devices are not solely for DL inferencing and how the software stack or the compilers on top of hardware system adapt the CNNs to optimize for the CPU. The performance on inference can be improved by using AI accelerators such as [Edge TPU](https://coral.ai/products/accelerator/#description) from Google along with the CPU on edge devices.
-### Adapting current processors for DL purposes & Limitations
-### The need of inference accelerators for neural networking operations
 
 ## Related papers
 - [A Survey of the Recent Architectures of Deep Convolutional Neural Networks](https://arxiv.org/abs/1901.06032)
