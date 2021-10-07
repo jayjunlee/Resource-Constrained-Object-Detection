@@ -3,6 +3,10 @@
 
 A research project supervised by Dr David Thomas (Imperial College) on lightweight convolutional neural network solution to detect obstacle balls using computer vision that is trained using PyTorch / TFLite to be deployed on the following resource constrained environments: Intel DE10-Lite FPGA and Raspberry Pi 3.
 
+[Hard-coded ver.](https://github.com/rs3319/EE2-Mars-Rover-Project-2021/blob/main/DE10_LITE_D8M_VIP_16/ip/EEE_IMGPROC/EEE_IMGPROC.v)            |  DL ver.
+:-------------------------:|:-------------------------:
+![](https://github.com/jl7719/Resource-Constrained-Object-Detection/blob/main/hardcoded.gif)  |  ![](https://github.com/jl7719/Resource-Constrained-Object-Detection/blob/main/DL.gif)
+
 ## Limitations / Constraints
 - Limited dataset of about 500 images (approx. 100 for each class)
 - Dataset includes images of small objects
